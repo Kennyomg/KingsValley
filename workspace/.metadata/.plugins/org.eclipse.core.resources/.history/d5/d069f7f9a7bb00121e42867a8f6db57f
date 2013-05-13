@@ -42,7 +42,7 @@ public class StairsRight
 					  new Vector2(this.position.x + (i + 1) * 16, this.position.y - i * 16),
 					  trapRight02, '^'));
 		}
-		this.stairs.add(new StepRight(this.game, new Vector2(this.position.x + ((this.amountOfSteps + 1) * 16), this.position.y + this.amountOfSteps * 16),trapTopRight02,'^'));
+		this.stairs.add(new StepRight(this.game, new Vector2(this.position.x + ((this.amountOfSteps + 1) * 16), this.position.y + (this.amountOfSteps * 16)),trapTopRight02,'^'));
 	}
 	
 	public void Draw(float delta)

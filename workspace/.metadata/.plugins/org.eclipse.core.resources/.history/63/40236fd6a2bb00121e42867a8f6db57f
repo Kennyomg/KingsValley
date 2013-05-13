@@ -13,7 +13,6 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 import bricks.Brick;
-import bricks.StairsRight;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
@@ -42,7 +41,6 @@ public class Level
 	private ExplorerInputProcessor inputProcessor;
 	private ExplorerGestureListener gestureListener;
 	private InputMultiplexer multiplexer;
-	private ArrayList<StairsRight> stairsRight;
 	
 	//Properties
 	public Explorer getExplorer() {
@@ -63,8 +61,7 @@ public class Level
 		} catch (IOException e) {
 			e.getMessage();
 		}
-		this.stairsRight = new ArrayList<StairsRight>();
-		this.DetectStairsRight();
+		
 		//Inputprocessor zorgt voor alle inputdetectie
 		//-----------------------------------------------------
 		this.inputProcessor = new ExplorerInputProcessor(this);
@@ -94,9 +91,6 @@ public class Level
 		this.region.put("brick_transparent", new TextureRegion(this.spriteSheet, 0, 16, 16, 16));
 		this.region.put("traptopright01", new TextureRegion(this.spriteSheet, 100, 16, 16, 16));
 		this.region.put("traptopleft01", new TextureRegion(this.spriteSheet, 68, 16, 16, 16));
-		this.region.put("trapRight01", new TextureRegion(this.spriteSheet, 100, 0, 16, 16));
-		this.region.put("trapRight02", new TextureRegion(this.spriteSheet, 116, 0, 16, 16));
-		this.region.put("traptopright02", new TextureRegion(this.spriteSheet, 116, 16, 16, 16));
 		
 		//Alle stenen omdraaien
 		for (Map.Entry<String, TextureRegion> e : this.region.entrySet())
@@ -166,18 +160,17 @@ public class Level
 			{
 				if(this.bricks[j][i].getCharacter() == 's')
 				{
-					int amountOfSteps = 0;
+					int amountOfStairs = 0;
 					int horizontal = j + 1;
 					for (int k = (i + 1); k < this.height; k++)
 					{
 						horizontal--;
 						if (this.bricks[horizontal][k].getCharacter() == '1')
 						{
-							amountOfSteps = k - i - 1;
+							amountOfStairs = k - i - 1;
 							break;
 						}
 					}
-					this.stairsRight.add(new StairsRight(this.game, new Vector2(j * 16, i * 16),amountOfSteps,this.region.get("trapRight01"),this.region.get("trapRight02"),this.region.get("traptopright02")));
 				}
 			}
 		}
@@ -197,11 +190,6 @@ public class Level
 			{
 				this.bricks[j][i].Draw(delta);
 			}				
-		}
-		
-		for (StairsRight stairsRight : this.stairsRight)
-		{
-			stairsRight.Draw(delta);
 		}
 		
 		this.explorer.Draw(delta);

@@ -199,11 +199,6 @@ public class Level
 			}				
 		}
 		
-		for (StairsRight stairsRight : this.stairsRight)
-		{
-			stairsRight.Draw(delta);
-		}
-		
 		this.explorer.Draw(delta);
 	}
 }

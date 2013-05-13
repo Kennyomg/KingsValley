@@ -64,7 +64,7 @@ public class Level
 			e.getMessage();
 		}
 		this.stairsRight = new ArrayList<StairsRight>();
-		this.DetectStairsRight();
+		
 		//Inputprocessor zorgt voor alle inputdetectie
 		//-----------------------------------------------------
 		this.inputProcessor = new ExplorerInputProcessor(this);
@@ -177,7 +177,7 @@ public class Level
 							break;
 						}
 					}
-					this.stairsRight.add(new StairsRight(this.game, new Vector2(j * 16, i * 16),amountOfSteps,this.region.get("trapRight01"),this.region.get("trapRight02"),this.region.get("traptopright02")));
+					this.stairsRight.add(new StairsRight(this.game, new Vector2(j * 16, i * 16),amountOfSteps,))
 				}
 			}
 		}
@@ -197,11 +197,6 @@ public class Level
 			{
 				this.bricks[j][i].Draw(delta);
 			}				
-		}
-		
-		for (StairsRight stairsRight : this.stairsRight)
-		{
-			stairsRight.Draw(delta);
 		}
 		
 		this.explorer.Draw(delta);

@@ -64,7 +64,7 @@ public class Level
 			e.getMessage();
 		}
 		this.stairsRight = new ArrayList<StairsRight>();
-		this.DetectStairsRight();
+		
 		//Inputprocessor zorgt voor alle inputdetectie
 		//-----------------------------------------------------
 		this.inputProcessor = new ExplorerInputProcessor(this);
@@ -197,11 +197,6 @@ public class Level
 			{
 				this.bricks[j][i].Draw(delta);
 			}				
-		}
-		
-		for (StairsRight stairsRight : this.stairsRight)
-		{
-			stairsRight.Draw(delta);
 		}
 		
 		this.explorer.Draw(delta);
